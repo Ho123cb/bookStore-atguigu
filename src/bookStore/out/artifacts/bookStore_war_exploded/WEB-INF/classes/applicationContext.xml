@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE beans [
+        <!ELEMENT beans (bean*)>
+        <!ELEMENT bean (property*)>
+        <!ELEMENT property (#PCDATA)>
+
+        <!ATTLIST bean id ID #REQUIRED>
+        <!ATTLIST bean class CDATA #IMPLIED>
+        <!ATTLIST property name CDATA #IMPLIED>
+        <!ATTLIST property ref IDREF #IMPLIED>
+        ]>
+
+<beans>
+    <bean id="userDAO" class="com.bookStore.dao.Impl.UserDAOImpl"/>
+
+
+    <bean id="userService" class="com.bookStore.service.Impl.UserServiecImpl">
+    <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+
+    <bean id="page" class="com.atguigu.myssm.myspringmvc.PageController"/>
+
+    <bean id="user" class="com.bookStore.controller.UserController">
+        <property name="userService" ref="userService"/>
+    </bean>
+</beans>

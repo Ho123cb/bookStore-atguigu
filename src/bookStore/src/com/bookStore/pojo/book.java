@@ -1,6 +1,8 @@
 package com.bookStore.pojo;
 
-public class book {
+import java.util.List;
+
+public class Book {
     private Integer id;
     private String title;
     private String author;
@@ -8,8 +10,9 @@ public class book {
     private Integer sales;
     private Integer stock;
     private String img_path;
-
-    public book() {
+    //用来判断当前的图书是否已经被删除了
+    private Integer status;
+    public Book() {
     };
 
     public Integer getId() {
