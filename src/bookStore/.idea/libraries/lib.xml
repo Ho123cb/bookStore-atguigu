@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../Day3-tomcat-servlet/代码/pro07-javaweb-begin/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../Day3-tomcat-servlet/代码/pro07-javaweb-begin/lib" recursive="false" />
+  </library>
+</component>
