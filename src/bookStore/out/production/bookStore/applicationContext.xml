@@ -18,6 +18,7 @@
 
     <bean id="cartService" class="com.bookStore.service.Impl.CartServiceImpl">
         <property name="cartDAO" ref="cartDAO"/>
+        <property name="bookService" ref="bookService"/>
     </bean>
     <bean id="userService" class="com.bookStore.service.Impl.UserServiecImpl">
     <property name="userDAO" ref="userDAO"/>

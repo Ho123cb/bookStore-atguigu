@@ -24,7 +24,7 @@
             <a href="./pages/user/regist.html" class="register">注册</a>
             <a href="./pages/cart/cart.html" class="cart iconfont icon-gouwuche">
               购物车
-              <div class="cart-num" th:text="${session}">3</div>
+              <div class="cart-num" ></div>
             </a>
             <a href="./pages/manager/book_manager.html" class="admin">后台管理</a>
           </div>
@@ -32,9 +32,9 @@
             <!--          登录后风格-->
             <span>欢迎你<b th:text="${session.user.uname}">张总</b></span>
             <a href="#" class="register">注销</a>
-            <a th:href="@{page.do?oeprate=page&page=/cart/cart}" class="cart iconfont icon-gouwuche">
+            <a th:href="@{/page.do?operate=page&page=/cart/cart}" class="cart iconfont icon-gouwuche">
               购物车
-              <div class="cart-num" th:if="${session.cart != null}" th:text="${session.cart.cartCount}">10</div>
+              <div class="cart-num" th:if="${session.user.cart != null}" th:text="${session.user.cart.cartCount}">10</div>
             </a>
             <a href="./pages/manager/book_manager.html" class="admin">后台管理</a>
           </div>

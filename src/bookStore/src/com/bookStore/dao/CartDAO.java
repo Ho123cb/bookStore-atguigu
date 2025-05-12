@@ -8,5 +8,6 @@ public interface CartDAO {
     public void insertCartDAO(Integer book, Integer userBean);
     public void updateCartDAO(Integer book);
     public boolean bookInCartDAO(Integer book);
-    public List<CartItem> getListByUserBeanDAO(Integer userBean);
+    public List<Integer> getBookIdByUserBean(Integer userBean);
+    public CartItem getCartItemByBook(Integer book, Integer userBean);
 }

@@ -4,7 +4,9 @@ import com.atguigu.myssm.basedao.BaseDAO;
 import com.bookStore.dao.CartDAO;
 import com.bookStore.pojo.CartItem;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CartDAOImpl extends BaseDAO<CartItem> implements CartDAO {
 
@@ -24,7 +26,15 @@ public class CartDAOImpl extends BaseDAO<CartItem> implements CartDAO {
     }
 
     @Override
-    public List<CartItem> getListByUserBeanDAO(Integer userBean) {
-        return super.executeQuery("select * from t_cart_item where userBean = ?", userBean);
+    public List<Integer> getBookIdByUserBean(Integer userBean) {
+        List<CartItem> cartItemList = super.executeQuery("select book from t_cart_item where userBean = ?", userBean);
+        List<Integer> list = cartItemList.stream().map(t -> t.getBook().getId()).toList();
+        return list;
     }
+
+    @Override
+    public CartItem getCartItemByBook(Integer book, Integer userBean) {
+        return super.load("select * from t_cart_item where book = ? AND userBean = ?",book, userBean);
+    }
+
 }

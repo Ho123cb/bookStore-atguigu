@@ -4,8 +4,12 @@ import com.bookStore.pojo.Cart;
 import com.bookStore.pojo.CartItem;
 import com.bookStore.pojo.User;
 import com.bookStore.service.CartService;
+import com.bookStore.util.DoubleUtils;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.HashMap;
 import java.util.List;
 
 public class CartController {
@@ -20,9 +24,23 @@ public class CartController {
         return "index";
     }
 
-//    public String setCart(Integer userBean, HttpSession session) {
-//        //根据userBean查询出所有的相关的cartitem并存到变量cart进入
-//        List<CartItem> cartItemList = cartService.getListByUserBean(userBean);
-//
-//    }
+    public String setCart(Integer userBean, HttpSession session) {
+        //根据userBean查询出所有的相关的cartitem并存到变量cart进入
+        HashMap<Integer, CartItem> cartItemHashMap = cartService.getCartItems(userBean);
+//        session.setAttribute("cart",new Cart(cartItemHashMap.size(),cartItemHashMap));
+        User user =(User) session.getAttribute("user");
+        int books = 0;
+        Double saleCount = 0.0;
+        for(var t : cartItemHashMap.entrySet()) {
+            CartItem value = t.getValue();
+            books += value.getBuyCount();
+            saleCount += value.getBuyCount() * value.getBook().getSaleCount();
+        }
+        //精确实现位数进行约
+        saleCount = DoubleUtils.reserveNumDigits(saleCount,1);
+        user.setCart(new Cart(cartItemHashMap.size(),cartItemHashMap, books, saleCount));
+
+        session.setAttribute("user",user);
+        return "index";
+    }
 }
