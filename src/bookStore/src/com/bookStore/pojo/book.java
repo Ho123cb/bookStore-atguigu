@@ -4,16 +4,26 @@ import java.util.List;
 
 public class Book {
     private Integer id;
-    private String title;
-    private String author;
+    private String bookImg;
+    private String bookName;
     private Double price;
-    private Integer sales;
-    private Integer stock;
-    private String img_path;
+    private String author;
+    private Integer saleCount;
+    private Integer bookCount;
     //用来判断当前的图书是否已经被删除了
     private Integer status;
     public Book() {
     };
+
+    public Book(Integer id, String bookImg, String bookName, Double price, String author, Integer saleCount, Integer bookCount) {
+        this.id = id;
+        this.bookImg = bookImg;
+        this.bookName = bookName;
+        this.price = price;
+        this.author = author;
+        this.saleCount = saleCount;
+        this.bookCount = bookCount;
+    }
 
     public Integer getId() {
         return id;
@@ -23,20 +33,20 @@ public class Book {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getBookImg() {
+        return bookImg;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setBookImg(String bookImg) {
+        this.bookImg = bookImg;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
     public Double getPrice() {
@@ -47,27 +57,35 @@ public class Book {
         this.price = price;
     }
 
-    public Integer getSales() {
-        return sales;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setSales(Integer sales) {
-        this.sales = sales;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public Integer getStock() {
-        return stock;
+    public Integer getSaleCount() {
+        return saleCount;
     }
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
+    public void setSaleCount(Integer saleCount) {
+        this.saleCount = saleCount;
     }
 
-    public String getImg_path() {
-        return img_path;
+    public Integer getBookCount() {
+        return bookCount;
     }
 
-    public void setImg_path(String img_path) {
-        this.img_path = img_path;
+    public void setBookCount(Integer bookCount) {
+        this.bookCount = bookCount;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

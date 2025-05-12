@@ -13,10 +13,13 @@
 
 <beans>
     <bean id="userDAO" class="com.bookStore.dao.Impl.UserDAOImpl"/>
-
+    <bean id="bookDAO" class="com.bookStore.dao.Impl.BookDAOImpl"/>
 
     <bean id="userService" class="com.bookStore.service.Impl.UserServiecImpl">
     <property name="userDAO" ref="userDAO"/>
+    </bean>
+    <bean id="bookService" class="com.bookStore.service.Impl.BookServiceImpl">
+        <property name="bookDAO" ref="bookDAO"/>
     </bean>
 
 
@@ -24,5 +27,8 @@
 
     <bean id="user" class="com.bookStore.controller.UserController">
         <property name="userService" ref="userService"/>
+    </bean>
+    <bean id="book" class="com.bookStore.controller.BookController">
+        <property name="bookService" ref="bookService"/>
     </bean>
 </beans>
