@@ -7,6 +7,9 @@ public class User {
     private String email;
     private Integer role;
 
+    public User() {
+    }
+
     public User(Integer id, String uname, String pwd, String email, Integer role) {
         this.id = id;
         this.uname = uname;

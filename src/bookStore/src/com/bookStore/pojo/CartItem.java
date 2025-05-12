@@ -6,6 +6,9 @@ public class CartItem {
     private Integer buyCount;
     private  User userBean;
 
+    public CartItem() {
+    }
+
     public Integer getId() {
         return id;
     }

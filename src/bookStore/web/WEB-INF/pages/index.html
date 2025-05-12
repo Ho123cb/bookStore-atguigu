@@ -15,11 +15,11 @@
       <div class="topbar">
         <div class="w">
           <div class="topbar-left">
-            <i>送至0:</i>
+            <i>送至00:</i>
             <i>北京</i>
             <i class="iconfont icon-ai-arrow-down"></i>
           </div>
-          <div class="topbar-right" th:if="${session.containsKey('user')}">
+          <div class="topbar-right" th:if="${session.containsKey('user') == null}">
             <a th:href="@{page.do?operate=page&page=user/login}" class="login">登录</a>
             <a href="./pages/user/regist.html" class="register">注册</a>
             <a href="./pages/cart/cart.html" class="cart iconfont icon-gouwuche">
@@ -28,7 +28,7 @@
             </a>
             <a href="./pages/manager/book_manager.html" class="admin">后台管理</a>
           </div>
-          <div class="topbar-right" th:unless="${session.containsKey('user')}">
+          <div class="topbar-right" th:unless="${session.containsKey('user') == null}">
             <!--          登录后风格-->
             <span>欢迎你<b th:text="${session.user.uname}">张总</b></span>
             <a href="#" class="register">注销</a>

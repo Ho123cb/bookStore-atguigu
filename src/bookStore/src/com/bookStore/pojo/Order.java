@@ -13,6 +13,9 @@ public class Order {
 
     private List<OrderItem> orderItemList ;
 
+    public Order() {
+    }
+
     public Integer getId() {
         return id;
     }

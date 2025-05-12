@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 public class UserServiecImpl implements UserService {
     UserDAO userDAO;
     @Override
-    public User getUserByIdAndPwd(Integer id, String pwd) {
-        return userDAO.getUserByIdAndpwdDAO(id, pwd);
+    public User getUserByIdAndPwd(String uname, String pwd) {
+        return userDAO.getUserByIdAndpwdDAO(uname, pwd);
     }
 }

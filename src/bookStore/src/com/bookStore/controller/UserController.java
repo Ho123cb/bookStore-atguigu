@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     UserService userService;
-    public String login(Integer id, String pwd, HttpSession session) {
-        User user = userService.getUserByIdAndPwd(id, pwd);
+    public String login(String uname, String pwd, HttpSession session) {
+        User user = userService.getUserByIdAndPwd(uname, pwd);
         if(user != null) {
             session.setAttribute("user", user);
         }

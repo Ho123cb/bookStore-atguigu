@@ -10,6 +10,9 @@ public class OrderItem {
         return id;
     }
 
+    public OrderItem() {
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
