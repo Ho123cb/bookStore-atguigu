@@ -7,7 +7,13 @@ public class User {
     private String email;
     private Integer role;
 
+    private Cart carts;
+
     public User() {
+    }
+
+    public User(Integer id) {
+        this.id = id;
     }
 
     public User(Integer id, String uname, String pwd, String email, Integer role) {

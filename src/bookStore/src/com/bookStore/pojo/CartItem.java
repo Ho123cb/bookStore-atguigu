@@ -9,6 +9,13 @@ public class CartItem {
     public CartItem() {
     }
 
+    public CartItem(Integer id, Book book, Integer buyCount, User userBean) {
+        this.id = id;
+        this.book = book;
+        this.buyCount = buyCount;
+        this.userBean = userBean;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BookController {
     BookService bookService;
-    public String setSessionBookList(HttpSession session) {
+    public String index(HttpSession session) {
         session.setAttribute("bookList", bookService.getBookList());
         return "index";
     }
