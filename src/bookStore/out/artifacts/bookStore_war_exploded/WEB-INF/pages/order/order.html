@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,13 +19,7 @@
           /></a>
           <h1>我的订单</h1>
         </div>
-        <div class="header-right">
-          <h3>欢迎<span>张总</span>光临尚硅谷书城</h3>
-          <div class="order"><a href="../order/order.html">我的订单</a></div>
-          <div class="destory"><a href="../index.html">注销</a></div>
-          <div class="gohome">
-            <a href="../index.html">返回</a>
-          </div>
+        <div class="header-right"  th:replace="cart/cart::copyme">
         </div>
       </div>
     </div>
@@ -43,34 +37,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>12354456895</td>
-              <td>
+            <tr th:each="order:${session.user.orderList}" th:object="${order}">
+              <td th:text="*{#strings.substring(orderNo,0,5)}">12354456895</td>
+              <td th:type="*{orderDate}">
                 2015.04.23
               </td>
-              <td>90.00</td>
-              <td>88</td>
-              <td><a href="" class="send">等待发货</a></td>
-              <td><a href="">查看详情</a></td>
-            </tr>
-            <tr>
-              <td>12354456895</td>
-              <td>
-                2015.04.23
-              </td>
-              <td>90.00</td>
-              <td>88</td>
-              <td><a href="" class="send">未发货</a></td>
-              <td><a href="">查看详情</a></td>
-            </tr>
-            <tr>
-              <td>12354456895</td>
-              <td>
-                2015.04.23
-              </td>
-              <td>90.00</td>
-              <td>88</td>
-              <td><a href="" class="send">已发货</a></td>
+              <td th:text="*{orderMoney}">90.00</td>
+              <td th:text="*{orderNumbers}">88</td>
+              <td><a href="" class="send">等待发货1</a></td>
               <td><a href="">查看详情</a></td>
             </tr>
           </tbody>

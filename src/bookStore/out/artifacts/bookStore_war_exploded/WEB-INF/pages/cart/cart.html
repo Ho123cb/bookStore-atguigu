@@ -18,11 +18,11 @@
           <h1>我的购物车</h1>
         </div>
         <div class="header-right" th:fragment="copyme">
-          <h3>欢迎<span th:text="${session.user.uname}">张总</span>光临尚硅谷书城</h3>
-          <div class="order"><a href="../order/order.html">我的订单</a></div>
+          <h3>欢迎<span th:text="${session.user.uname}">张总</span>光临尚硅谷书城1</h3>
+          <div class="order"><a th:href="@{/order.do(operate='showOrder',orderUser=${session.user.id})}">我的订单</a></div>
           <div class="destory"><a href="../index.html">注销</a></div>
           <div class="gohome">
-            <a th:href="@{/cart.do(operate=setCart, userBean=${session.user.id})}">返回0</a>
+            <a th:href="@{/cart.do(operate=setCart, userBean=${session.user.id})}">返回</a>
           </div>
         </div>
       </div>

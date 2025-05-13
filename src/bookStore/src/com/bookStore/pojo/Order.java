@@ -10,6 +10,15 @@ public class Order {
     User orderUser;
     Double orderMoney;
     Integer orderStatus;
+    Integer orderNumbers;
+
+    public Integer getOrderNumbers() {
+        return orderNumbers;
+    }
+
+    public void setOrderNumbers(Integer orderNumbers) {
+        this.orderNumbers = orderNumbers;
+    }
 
     private List<OrderItem> orderItemList ;
 

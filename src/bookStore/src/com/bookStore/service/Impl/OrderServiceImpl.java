@@ -2,21 +2,19 @@ package com.bookStore.service.Impl;
 
 import com.bookStore.dao.CartDAO;
 import com.bookStore.dao.OrderDAO;
-import com.bookStore.pojo.Book;
-import com.bookStore.pojo.CartItem;
-import com.bookStore.pojo.User;
+import com.bookStore.dao.OrderItemDAO;
+import com.bookStore.pojo.*;
 import com.bookStore.service.OrderService;
 
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Parameter;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
+import com.bookStore.pojo.OrderItem;
 public class OrderServiceImpl implements OrderService {
     OrderDAO orderDAO;
     CartDAO cartDAO;
+    OrderItemDAO orderItemDAO;
     @Override
     public int addOrderReIdService(HttpSession session) {
         //给予cart
@@ -51,4 +49,21 @@ public class OrderServiceImpl implements OrderService {
         addOrderItemByOrederBean(orderBean, session);
         cartDAO.delCartItemByUserBeanDAO(((User)session.getAttribute("user")).getId());
     }
+
+    @Override
+    public List<Order> getOrderIdList(Integer orderUser) {
+        List<Order> orderList = orderDAO.getorderIdListDAO(orderUser);
+        for(int i = 0; i < orderList.size(); i++) {
+            Order order = orderList.get(i);
+            Integer orderNumbers = orderItemDAO.getOrderNumbers(order.getId());
+            order.setOrderNumbers(orderNumbers);
+            orderList.set(i,order);
+        }
+        return orderList;
+    }
+
+
+
+
+
 }

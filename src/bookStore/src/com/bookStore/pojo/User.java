@@ -1,5 +1,7 @@
 package com.bookStore.pojo;
 
+import java.util.List;
+
 public class User {
     private Integer id;
     private String uname;
@@ -7,6 +9,17 @@ public class User {
     private String email;
     private Integer role;
     private Cart cart;
+
+    private List<Order> orderList;
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
     public Cart getCart() {
         return cart;
     }
