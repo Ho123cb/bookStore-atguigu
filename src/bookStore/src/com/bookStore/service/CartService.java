@@ -8,4 +8,5 @@ import java.util.List;
 public interface CartService {
     public void addCartSerivce(Integer id, Integer userBean);
     public HashMap<Integer, CartItem> getCartItems(Integer userBean);
+    public void delCartItemByUserBean(Integer userBean);
 }

@@ -17,12 +17,12 @@
           /></a>
           <h1>我的购物车</h1>
         </div>
-        <div class="header-right">
+        <div class="header-right" th:fragment="copyme">
           <h3>欢迎<span th:text="${session.user.uname}">张总</span>光临尚硅谷书城</h3>
           <div class="order"><a href="../order/order.html">我的订单</a></div>
           <div class="destory"><a href="../index.html">注销</a></div>
           <div class="gohome">
-            <a href="../index.html">返回</a>
+            <a th:href="@{/cart.do(operate=setCart, userBean=${session.user.id})}">返回0</a>
           </div>
         </div>
       </div>
@@ -66,7 +66,7 @@
           <div class="footer-right">
             <div>共<span th:text="${session.user.cart.books}">3</span>件商品</div>
             <div class="total-price" >总金额<span th:text="${session.user.cart.saleCount}">99.9</span>元</div>
-            <a class="pay" href="checkout.html">去结账</a>
+            <a class="pay" th:href="@{/order.do}">去结账2</a>
           </div>
         </div>
       </div>

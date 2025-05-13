@@ -15,6 +15,7 @@
     <bean id="userDAO" class="com.bookStore.dao.Impl.UserDAOImpl"/>
     <bean id="bookDAO" class="com.bookStore.dao.Impl.BookDAOImpl"/>
     <bean id="cartDAO" class="com.bookStore.dao.Impl.CartDAOImpl"/>
+    <bean id="orderDAO" class="com.bookStore.dao.Impl.OrderDAOImpl"/>
 
     <bean id="cartService" class="com.bookStore.service.Impl.CartServiceImpl">
         <property name="cartDAO" ref="cartDAO"/>
@@ -26,7 +27,10 @@
     <bean id="bookService" class="com.bookStore.service.Impl.BookServiceImpl">
         <property name="bookDAO" ref="bookDAO"/>
     </bean>
-
+    <bean id="orderService" class="com.bookStore.service.Impl.OrderServiceImpl">
+        <property name="orderDAO" ref="orderDAO"/>
+        <property name="cartDAO" ref="cartDAO"/>
+    </bean>
 
     <bean id="page" class="com.atguigu.myssm.myspringmvc.PageController"/>
 
@@ -38,5 +42,8 @@
     </bean>
     <bean id="cart" class="com.bookStore.controller.CartController">
         <property name="cartService" ref="cartService"/>
+    </bean>
+    <bean id="order" class="com.bookStore.controller.OrderController">
+        <property name="orderService" ref="orderService"/>
     </bean>
 </beans>

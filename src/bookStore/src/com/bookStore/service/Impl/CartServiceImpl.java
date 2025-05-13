@@ -40,4 +40,9 @@ public class CartServiceImpl implements CartService {
 
         return cartItemHashMap;
     }
+
+    @Override
+    public void delCartItemByUserBean(Integer userBean) {
+        cartDAO.delCartItemByUserBeanDAO(userBean);
+    }
 }

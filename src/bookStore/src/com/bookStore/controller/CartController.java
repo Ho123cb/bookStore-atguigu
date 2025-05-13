@@ -21,6 +21,7 @@ public class CartController {
         Integer beanUser = user.getId();
        //根据id将书籍加入到表t_cart_item
         cartService.addCartSerivce(book, beanUser);
+        setCart(beanUser,session);
         return "index";
     }
 

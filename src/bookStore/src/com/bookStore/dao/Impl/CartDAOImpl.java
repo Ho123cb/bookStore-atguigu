@@ -37,4 +37,9 @@ public class CartDAOImpl extends BaseDAO<CartItem> implements CartDAO {
         return super.load("select * from t_cart_item where book = ? AND userBean = ?",book, userBean);
     }
 
+    @Override
+    public void delCartItemByUserBeanDAO(Integer userBean) {
+        super.executeUpdate("delete from t_cart_item where userBean = ?", userBean);
+    }
+
 }

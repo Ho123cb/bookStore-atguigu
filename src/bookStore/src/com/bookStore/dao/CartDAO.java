@@ -10,4 +10,5 @@ public interface CartDAO {
     public boolean bookInCartDAO(Integer book);
     public List<Integer> getBookIdByUserBean(Integer userBean);
     public CartItem getCartItemByBook(Integer book, Integer userBean);
+    public void delCartItemByUserBeanDAO(Integer userBean);
 }

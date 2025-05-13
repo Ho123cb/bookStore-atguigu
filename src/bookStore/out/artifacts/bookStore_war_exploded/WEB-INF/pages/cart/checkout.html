@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>结算页面</title>
@@ -37,21 +37,15 @@
 					<a href="../index.html">
 						<img src="../../static/img/logo.gif" alt=""
 						/></a>
-					<span>我的购物车</span>
+					<span>我的购物车1</span>
 				</div>
-				<div class="header-right">
-					<h3>欢迎<span>张总</span>光临尚硅谷书城</h3>
-					<div class="order"><a href="../order/order.html">我的订单</a></div>
-					<div class="destory"><a href="../index.html">注销</a></div>
-					<div class="gohome">
-						<a href="../index.html">返回</a>
-					</div>
+				<div th:replace="cart/cart::copyme">
 				</div>
 			</div>
 		</div>
 	
 	<div id="main">
-		<h1>你的订单已结算，订单号为:<span class="oid">546845626455846</span></h1>
+		<h1>你的订单已结算，订单号为:<span class="oid" th:text="${session.orderNo}">546845626455846</span></h1>
 	</div>
 
 	<div id="bottom">

@@ -12,13 +12,23 @@
    | `#session.xxx`   | Thymeleaf 内置对象 `#session`，它是 `HttpSession` 的映射 | 表示使用 Thymeleaf 自带的表达式对象访问 session 作用域 |
    | `session`        | 可能是一个你传入的模型变量名叫 session（容易混淆）       | 所以 Thymeleaf 推荐 `#session` 更清晰                  |
 
-3. 
+---
+
+
 
 ## optimization:
 
+---
+
 ## Reflection:
 
-## newKnowlege
+1. 对于java基础的知识掌握太差，以及thymeleaf和html相关的用法都需求用再差导致效率底下
+
+   解决： 着重复习集合、stream、lamda表达式，以及thymeleaf常用概念的区分
+
+---
+
+## newKnowlege：
 1. 如何快速遍历一个`HashMap`容器？
 
 ​	✅ 方式一：使用 `entrySet()`（推荐方式 ✅）
