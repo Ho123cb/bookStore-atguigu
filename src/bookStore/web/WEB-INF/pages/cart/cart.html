@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../static/css/minireset.css" />
     <link rel="stylesheet" href="../../static/css/common.css" />
     <link rel="stylesheet" href="../../static/css/cart.css" />
+    <script language="JavaScript" th:src="@{/static/script/cart.js}"></script>
   </head>
   <body>
     <div class="header">
@@ -32,7 +33,7 @@
         <table>
           <thead>
             <tr>
-              <th>图片</th>
+              <th>图片77</th>
               <th>商品名称</th>
 
               <th>数量</th>
@@ -48,9 +49,9 @@
               </td>
               <td th:text="*{book.bookName}">活着</td>
               <td>
-                <span class="count">-</span>
+                <span class="count"  th:onclick="*{buyCount > 1} ? 'del(' + ${cartItem.id} + ')' : null">-</span>
                 <input class="count-num" type="text" th:value="*{buyCount}" />
-                <span class="count">+</span>
+                <span class="count" th:onclick="|add(${cartItem.id})|">+</span>
               </td>
               <td th:text="*{book.price}">36.8</td>
               <td th:text="*{#numbers.formatDecimal(book.price * buyCount, 1, 1)}">36.8</td>

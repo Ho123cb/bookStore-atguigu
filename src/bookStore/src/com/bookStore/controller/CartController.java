@@ -6,9 +6,11 @@ import com.bookStore.pojo.User;
 import com.bookStore.service.CartService;
 import com.bookStore.util.DoubleUtils;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,5 +45,11 @@ public class CartController {
 
         session.setAttribute("user",user);
         return "index";
+    }
+
+    public String editCart(Integer id, Integer oop, HttpSession session) {
+        cartService.modifyCartItemByIdService(id,oop == 1);
+        setCart(((User)session.getAttribute("user")).getId(),session);
+        return "cart/cart";
     }
 }

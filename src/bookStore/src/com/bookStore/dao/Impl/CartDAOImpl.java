@@ -16,13 +16,13 @@ public class CartDAOImpl extends BaseDAO<CartItem> implements CartDAO {
     }
 
     @Override
-    public void updateCartDAO(Integer book) {
-        super.executeUpdate("update t_cart_item set buyCount = buyCount + 1 where book = ?", book);
+    public void updateCartDAO(Integer book, Integer userBean) {
+        super.executeUpdate("update t_cart_item set buyCount = buyCount + 1 where book = ? AND userBean = ?", book, userBean);
     }
 
     @Override
-    public boolean bookInCartDAO(Integer book) {
-        return !super.executeQuery("select * from t_cart_item where book = ? ", book).isEmpty();
+    public boolean bookInCartDAO(Integer book, Integer userBean) {
+        return !super.executeQuery("select * from t_cart_item where book = ? AND userBean = ?", book,userBean).isEmpty();
     }
 
     @Override
@@ -40,6 +40,16 @@ public class CartDAOImpl extends BaseDAO<CartItem> implements CartDAO {
     @Override
     public void delCartItemByUserBeanDAO(Integer userBean) {
         super.executeUpdate("delete from t_cart_item where userBean = ?", userBean);
+    }
+
+    @Override
+    public void subCartItemDAO(Integer id) {
+        super.executeUpdate("update t_cart_item set buyCount = buyCount - 1 where id = ?", id);
+    }
+
+    @Override
+    public void addCartItemDAO(Integer id) {
+        super.executeUpdate("update t_cart_item set buyCount = buyCount + 1 where id = ?", id);
     }
 
 }

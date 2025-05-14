@@ -2,10 +2,13 @@ package com.bookStore.service.Impl;
 
 import com.bookStore.dao.CartDAO;
 import com.bookStore.pojo.Book;
+import com.bookStore.pojo.Cart;
 import com.bookStore.pojo.CartItem;
+import com.bookStore.pojo.User;
 import com.bookStore.service.BookService;
 import com.bookStore.service.CartService;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,9 +17,9 @@ public class CartServiceImpl implements CartService {
     BookService bookService;
     @Override
     public void addCartSerivce(Integer book, Integer userBean) {
-        boolean updateORinsert = cartDAO.bookInCartDAO(book);
+        boolean updateORinsert = cartDAO.bookInCartDAO(book, userBean);
         if(updateORinsert) {
-            cartDAO.updateCartDAO(book);
+            cartDAO.updateCartDAO(book, userBean);
         }
         else {
             cartDAO.insertCartDAO(book,userBean);
@@ -44,5 +47,15 @@ public class CartServiceImpl implements CartService {
     @Override
     public void delCartItemByUserBean(Integer userBean) {
         cartDAO.delCartItemByUserBeanDAO(userBean);
+    }
+
+    @Override
+    public void modifyCartItemByIdService(Integer id, boolean AddOrSub) {
+        if(AddOrSub) {//add
+            cartDAO.addCartItemDAO(id);
+        }
+        else {//sub
+            cartDAO.subCartItemDAO(id);
+        }
     }
 }
