@@ -1,10 +1,22 @@
 package com.bookStore.pojo;
 
+import com.bookStore.util.DoubleUtils;
+
 public class CartItem {
     private Integer id;
     private Book book;
     private Integer buyCount;
     private  User userBean;
+    private Double xj;
+
+    public Double getXj() {
+        xj = (DoubleUtils.operationNum(buyCount.doubleValue(),book.getPrice().doubleValue(), "mul"));
+        return xj;
+    }
+
+    public void setXj(Double xj) {
+        this.xj = xj;
+    }
 
     public CartItem() {
     }

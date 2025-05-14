@@ -37,7 +37,8 @@ public class CartController {
         for(var t : cartItemHashMap.entrySet()) {
             CartItem value = t.getValue();
             books += value.getBuyCount();
-            saleCount += value.getBuyCount() * value.getBook().getPrice();
+            Double xj  = DoubleUtils.operationNum(value.getBuyCount().doubleValue(),value.getBook().getPrice().doubleValue(), "mul");
+            saleCount = DoubleUtils.operationNum(xj,saleCount,"add");
         }
         //精确实现位数进行约
         saleCount = DoubleUtils.reserveNumDigits(saleCount,1);
