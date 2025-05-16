@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th ="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <title>尚硅谷会员注册页面</title>
     <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
     <link rel="stylesheet" href="../../static/css/register.css" />
-    <style type="text/css">
+    <script th:src="@{/static/script/regist.js}"></script>
+    <style>
       .login_form {
         height: 420px;
         margin-top: 25px;
       }
+    a {
+      visibility: visible;
+    }
     </style>
   </head>
   <body>
@@ -22,47 +26,49 @@
     <div class="login_banner">
       <div class="register_form">
         <h1>注册尚硅谷会员</h1>
-        <form action="regist_success.html">
+        <form th:action="@{/user.do}" method="post" onsubmit="return judgmentConditions();">
+          <input type="hidden" name="operate" value="registUser"/>
           <div class="form-item">
             <div>
-              <label>用户名称:</label>
-              <input type="text" placeholder="请输入用户名" />
+              <label>用户名称1:</label>
+              <input type="text" name="uname" placeholder="请输入用户名" id="tUname" onblur=""/>
             </div>
-            <span class="errMess">用户名应为6~16位数组和字母组成</span>
+            <span class="errMess" id="tUnameText">用户名应为6~16位数组和字母组成</span>
           </div>
           <div class="form-item">
             <div>
               <label>用户密码:</label>
-              <input type="password" placeholder="请输入密码" />
+              <input type="password" name="pwd" placeholder="请输入密码" id="tPwd"/>
             </div>
-            <span class="errMess">密码的长度至少为8位</span>
+            <span class="errMess" id="tPwdContext">密码的长度至少为8位</span>
           </div>
           <div class="form-item">
             <div>
               <label>确认密码:</label>
-              <input type="password" placeholder="请输入确认密码" />
+              <input type="password" placeholder="请输入确认密码" id="tPwd2"/>
             </div>
-            <span class="errMess">密码两次输入不一致</span>
+            <span class="errMess" id="tPwd2Context">密码两次输入不一致</span>
           </div>
           <div class="form-item">
             <div>
               <label>用户邮箱:</label>
-              <input type="text" placeholder="请输入邮箱" />
+              <input type="text" name="email" placeholder="请输入邮箱" class="tEmail" id="tEmailId"/>
             </div>
-            <span class="errMess">请输入正确的邮箱格式</span>
+            <span class="errMess" id="tEmailIdContext">请输入正确的邮箱格式</span>
           </div>
 		 
           <div class="form-item">
             <div>
               <label>验证码:</label>
               <div class="verify">
-                <input type="text" placeholder="" />
-                <img src="../../static/img/code.bmp" alt="" height="50px"/>
+                <input type="text" name="verifyCode" placeholder="" />
+                <img src="/kaptcha.png" alt="" height="50px"/>
+<!--                <span th:text="${session.KAPTCHA_SESSION_KEY}"></span>-->
               </div>
             </div>
             <span class="errMess">请输入正确的验证码</span>
           </div>
-          <button class="btn">注册</button>
+          <input type="submit" class="btn" value="注册"/>
         </form>
       </div>
     </div>

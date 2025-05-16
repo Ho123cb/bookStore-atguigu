@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MYSSM">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/bookStore/lib_ssm/MYSSM.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

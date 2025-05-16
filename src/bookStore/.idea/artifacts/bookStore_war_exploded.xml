@@ -9,6 +9,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="lib" />
           <element id="library" level="project" name="lib_ssm" />
+          <element id="library" level="project" name="lib-kaptcha" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="bookStore/web/Web" />

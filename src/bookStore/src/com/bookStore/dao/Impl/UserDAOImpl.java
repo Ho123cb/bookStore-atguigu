@@ -9,4 +9,9 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
     public User getUserByIdAndpwdDAO(String uname, String pwd) {
         return super.load("select * from t_user where uname like ? AND pwd like ?", uname,pwd);
     }
+
+    @Override
+    public void addUser(User user) {
+        super.executeUpdate("insert into t_user values(0,?,?,?,0)",user.getUname(),user.getPwd(),user.getEmail());
+    }
 }

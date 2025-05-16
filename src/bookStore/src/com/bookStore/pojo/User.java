@@ -33,6 +33,12 @@ public class User {
     public User() {
     }
 
+    public User(String uname, String pwd, String email) {
+        this.uname = uname;
+        this.pwd = pwd;
+        this.email = email;
+    }
+
     public User(String uname, String pwd) {
         this.uname = uname;
         this.pwd = pwd;

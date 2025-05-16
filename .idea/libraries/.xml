@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="项目原型">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/项目原型/MYSSM.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/项目原型/myssm0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -12,4 +12,9 @@ public class UserServiecImpl implements UserService {
     public User getUserByIdAndPwd(String uname, String pwd) {
         return userDAO.getUserByIdAndpwdDAO(uname, pwd);
     }
+
+    @Override
+    public void addUser(User user) {
+        userDAO.addUser(user);
+    }
 }
