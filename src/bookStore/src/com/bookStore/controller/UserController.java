@@ -50,5 +50,8 @@ public class UserController {
         userService.addUser(user);
         return "user/login";
     }
-
+    public String ckUname(String uname) {
+        //书写业务方法，判断数据库有没有重名
+        return userService.verifyUname(uname) == true? "json:{'uname':'1'}":"json:{'uname':'0'}";
+    }
 }
