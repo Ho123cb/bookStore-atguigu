@@ -7,6 +7,7 @@ import com.bookStore.pojo.CartItem;
 import com.bookStore.pojo.User;
 import com.bookStore.service.BookService;
 import com.bookStore.service.CartService;
+import com.bookStore.util.DoubleUtils;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -38,6 +39,7 @@ public class CartServiceImpl implements CartService {
             CartItem cartItem = cartDAO.getCartItemByBook(book, userBean);
             //补充book字段的内容
             cartItem.setBook(bookService.getBookByid(book));
+            cartItem.setXj(DoubleUtils.operationNum(cartItem.getBook().getPrice(),cartItem.getBuyCount().doubleValue(),"mul"));
             cartItemHashMap.put( book, cartItem);
         }
 

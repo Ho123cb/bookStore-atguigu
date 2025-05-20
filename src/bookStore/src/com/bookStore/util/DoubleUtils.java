@@ -24,12 +24,13 @@ public class DoubleUtils {
                 b1 = b1.multiply(b2);
                 break;
             case "div":
-                b1 = b1.divide(b2);
+                b1 = b1.divide(b2 ,2, RoundingMode.HALF_UP);
                 break;
             default:
                 throw new RuntimeException("input oop is wrong!");
         }
-
+        //四舍五入进行保存
+        b1 = b1.setScale(2,RoundingMode.HALF_UP);
         return b1.doubleValue();
     }
 }

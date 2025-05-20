@@ -5,6 +5,7 @@ import com.bookStore.pojo.CartItem;
 import com.bookStore.pojo.User;
 import com.bookStore.service.CartService;
 import com.bookStore.util.DoubleUtils;
+import com.google.gson.Gson;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -51,6 +52,32 @@ public class CartController {
     public String editCart(Integer id, Integer oop, HttpSession session) {
         cartService.modifyCartItemByIdService(id,oop == 1);
         setCart(((User)session.getAttribute("user")).getId(),session);
-        return "cart/cart";
+        return "";
+    }
+
+    public String cartInfo( HttpSession session) {
+        Integer userBean = ((User)session.getAttribute("user")).getId();
+        //根据userBean查询出所有的相关的cartitem并存到变量cart进入
+        HashMap<Integer, CartItem> cartItemHashMap = cartService.getCartItems(userBean);
+//        session.setAttribute("cart",new Cart(cartItemHashMap.size(),cartItemHashMap));
+        User user =(User) session.getAttribute("user");
+        int books = 0;
+        Double saleCount = 0.0;
+        for(var t : cartItemHashMap.entrySet()) {
+            CartItem value = t.getValue();
+            books += value.getBuyCount();
+            Double xj  = DoubleUtils.operationNum(value.getBuyCount().doubleValue(),value.getBook().getPrice().doubleValue(), "mul");
+            saleCount = DoubleUtils.operationNum(xj,saleCount,"add");
+        }
+        //精确实现位数进行约
+        saleCount = DoubleUtils.reserveNumDigits(saleCount,1);
+        user.setCart(new Cart(cartItemHashMap.size(),cartItemHashMap, books, saleCount));
+
+        session.setAttribute("user",user);
+
+        Cart cart = user.getCart();
+        Gson gson = new Gson();
+        String cartJson = gson.toJson(cart);
+        return "json:"+cartJson;
     }
 }

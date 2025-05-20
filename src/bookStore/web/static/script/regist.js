@@ -52,9 +52,8 @@ function judgmentConditions() {
 
     return true;
 }
-
+// 1.创建并初始化一个xmlHttpRequest对象
 var xmlHttpRequest ;
-
 function createXMLHttpRequest(){
     if(window.XMLHttpRequest){
         //符合DOM2标准的浏览器 ，xmlHttpRequest的创建方式
@@ -67,7 +66,7 @@ function createXMLHttpRequest(){
         }
     }
 }
-
+//2.设计xmlHttpRequest的相关内容，并send出去
 function checkDB(uname) {
     createXMLHttpRequest();
     var url = "user.do?operate=ckUname&uname="+uname;
